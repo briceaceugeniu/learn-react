@@ -1,0 +1,19 @@
+.cost-icon-winter {
+    color: #92c6c6;
+}
+
+.cost-icon-sommer {
+    color: #a74b0e;
+}
+
+.txt-winter {
+    font-family: "Franklin Gothic Book", serif;
+    font-size: 22px;
+    color: darkcyan;
+}
+
+.txt-sommer {
+    font-family: "Franklin Gothic Book", serif;
+    font-size: 22px;
+    color: #c8b91c;
+}
