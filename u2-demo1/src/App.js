@@ -2,22 +2,56 @@ import React, { useState } from "react";
 import "./App.css";
 import Person from "./Person/Person";
 
-const App = () => {
-  const [name1, setName1] = useState("Boris");
-  const [name2, setName2] = useState("Ludmila");
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const switchNameHandler = () => {
-    setName1("Ivan");
-    setName2("Marusika");
+    this.state = {
+      persons: [
+        { id: 1, name: "Bobby" },
+        { id: 2, name: "Martha" },
+        { id: 3, name: "Cornel" },
+      ],
+      showPersons: true,
+    };
+  }
+
+  render() {
+    let person = null;
+
+    if (this.state.showPersons) {
+      person = (
+        <div>
+          {this.state.persons.map(({ name, id }, index) => {
+            return (
+              <Person
+                click={() => this.delPersonHandler(index)}
+                key={id}
+                name={name}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+
+    return (
+      <div className={`App`}>
+        <button onClick={this.togglePersonsHandler}>Switch!</button>
+        {person}
+      </div>
+    );
+  }
+
+  togglePersonsHandler = () => {
+    this.setState({ showPersons: !this.state.showPersons });
   };
 
-  return (
-    <div className={`App`}>
-      <button onClick={switchNameHandler}>Switch!</button>
-      <Person name={name1} />
-      <Person name={name2}>The Big Boss</Person>
-    </div>
-  );
-};
+  delPersonHandler = (index) => {
+    const persons = [...this.state.persons];
+    persons.splice(index, 1);
+    this.setState({ persons: persons });
+  };
+}
 
 export default App;
