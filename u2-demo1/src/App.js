@@ -16,6 +16,20 @@ class App extends React.Component {
     };
   }
 
+  togglePersonsHandler = () => {
+    this.setState({ showPersons: !this.state.showPersons });
+  };
+
+  delPersonHandler = (index) => {
+    const persons = [...this.state.persons];
+    persons.splice(index, 1);
+    this.setState({ persons: persons });
+  };
+
+  nameChangeHandler = () => {
+    this.setState({});
+  };
+
   render() {
     let person = null;
 
@@ -28,6 +42,7 @@ class App extends React.Component {
                 click={() => this.delPersonHandler(index)}
                 key={id}
                 name={name}
+                changeName={null}
               />
             );
           })}
@@ -42,16 +57,6 @@ class App extends React.Component {
       </div>
     );
   }
-
-  togglePersonsHandler = () => {
-    this.setState({ showPersons: !this.state.showPersons });
-  };
-
-  delPersonHandler = (index) => {
-    const persons = [...this.state.persons];
-    persons.splice(index, 1);
-    this.setState({ persons: persons });
-  };
 }
 
 export default App;
