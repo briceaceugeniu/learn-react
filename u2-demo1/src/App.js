@@ -26,8 +26,19 @@ class App extends React.Component {
     this.setState({ persons: persons });
   };
 
-  nameChangeHandler = () => {
-    this.setState({});
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const person = { ...this.state.persons[personIndex] };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons });
   };
 
   render() {
@@ -42,7 +53,7 @@ class App extends React.Component {
                 click={() => this.delPersonHandler(index)}
                 key={id}
                 name={name}
-                changeName={null}
+                changeName={(event) => this.nameChangeHandler(event, id)}
               />
             );
           })}
