@@ -13,7 +13,14 @@ const Person = (props) => {
           />
         </div>
         <p>I am a good person, think...</p>
-        <p>{props.children}</p>
+        <div className="ui transparent input small">
+          <input
+            onChange={props.changeName}
+            type="text"
+            placeholder="New name..."
+            value={props.name}
+          />
+        </div>
       </div>
     </div>
   );
