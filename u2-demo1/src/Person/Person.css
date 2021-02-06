@@ -1,3 +1,38 @@
 .delIcon {
     cursor: pointer;
 }
+
+.css-selector {
+    background: linear-gradient(227deg, #ff2400, #42d000, #1000ea);
+    background-size: 600% 600%;
+
+    /*color: #b31c1c;*/
+    /*background-clip: text;*/
+    /*text-fill-color: transparent;*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    -webkit-animation: AnimationName 12s ease infinite;
+    -moz-animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+
+.css-selector::selection {
+    background: rgba(0,0, 255, 0.5);
+}
