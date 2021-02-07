@@ -48,13 +48,16 @@ class App extends React.Component {
       border: "",
       color: "black",
       backgroundColor: "white",
+      ":hover": {
+        backgroundColor: "red",
+      },
     };
 
     let person = null;
 
     if (this.state.showPersons) {
       person = (
-        <div>
+        <div className={`p-content`}>
           {this.state.persons.map(({ name, id }, index) => {
             return (
               <Person
