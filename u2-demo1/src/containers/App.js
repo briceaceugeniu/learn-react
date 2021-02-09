@@ -1,7 +1,7 @@
 import React from "react";
-import "./App.css";
-import Person from "./Person/Person";
-import styled from "styled-components";
+import Persons from "../components/Persons/Persons";
+import classes from "../containers/App.module.css";
+import Cockpit from "../Cockpit/Cockpit";
 
 class App extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class App extends React.Component {
   };
   // endregion
 
-  // region delete person
+  // region delete person / change name
   delPersonHandler = (index) => {
     const persons = [...this.state.persons];
     persons.splice(index, 1);
@@ -43,45 +43,23 @@ class App extends React.Component {
   //endregion
 
   render() {
-    const BtnStyled = styled.button`
-      cursor: pointer;
-      color: blue;
-      padding: 6px;
-      background-color: white;
-      &:hover {
-        background-color: red;
-      }
-      &::after {
-        content: "${(props) => (props.alt ? "Hide" : "Show")}";
-      }
-    `;
-
     let person = null;
 
     if (this.state.showPersons) {
       person = (
         <div className={`p-content`}>
-          {this.state.persons.map(({ name, id }, index) => {
-            return (
-              <Person
-                click={() => this.delPersonHandler(index)}
-                key={id}
-                name={name}
-                changeName={(event) => this.nameChangeHandler(event, id)}
-              />
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.delPersonHandler}
+            changed={this.nameChangeHandler}
+          />
         </div>
       );
     }
 
     return (
-      <div className={`App`}>
-        <BtnStyled
-          alt={this.state.showPersons}
-          onClick={this.togglePersonsHandler}
-        ></BtnStyled>
-        {person}
+      <div className={classes.App}>
+        <Cockpit clicked={this.togglePersonsHandler} /> {person}
       </div>
     );
   }
