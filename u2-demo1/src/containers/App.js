@@ -48,7 +48,7 @@ class App extends React.Component {
 
     if (this.state.showPersons) {
       person = (
-        <div className={`p-content`}>
+        <div>
           <Persons
             persons={this.state.persons}
             clicked={this.delPersonHandler}
@@ -60,6 +60,7 @@ class App extends React.Component {
 
     return (
       <div className={classes.App}>
+        <h1>{this.props.title}</h1>
         <Cockpit
           showPersons={this.state.showPersons}
           clicked={this.togglePersonsHandler}
