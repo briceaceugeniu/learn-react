@@ -1,14 +1,15 @@
 import React from "react";
 import Persons from "../components/Persons/Persons";
 import classes from "../containers/App.module.css";
-import Cockpit from "../Cockpit/Cockpit";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends React.Component {
   state = {
     persons: [
-      { id: 1, name: "Bobby" },
-      { id: 2, name: "Martha" },
-      { id: 3, name: "Cornel" },
+      { id: 1, name: "Kerrigan" },
+      { id: 2, name: "Zeratul" },
+      { id: 3, name: "Tassadar" },
+      { id: 4, name: "Raynor" },
     ],
     showPersons: true,
   };
@@ -59,7 +60,11 @@ class App extends React.Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit clicked={this.togglePersonsHandler} /> {person}
+        <Cockpit
+          showPersons={this.state.showPersons}
+          clicked={this.togglePersonsHandler}
+        />{" "}
+        {person}
       </div>
     );
   }

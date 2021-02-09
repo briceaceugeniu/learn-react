@@ -2,15 +2,3 @@
   text-align: center;
 }
 
-.btnShowPers::after {
-  content: 'Show Persons';
-
-}
-
-.btnHiddePers::after {
-  content: 'Hidde Persons';
-}
-
-.btnPers:hover {
-  background-color: #8dadc4;
-}

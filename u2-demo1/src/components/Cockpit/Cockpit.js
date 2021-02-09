@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "../containers/App.module.css";
+import classes from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
   const btnClasses = [
     classes.btnPers,
-    this.state.showPersons ? classes.btnHiddePers : classes.btnShowPers,
+    props.showPersons ? classes.btnHiddePers : classes.btnShowPers,
   ];
 
   return (
