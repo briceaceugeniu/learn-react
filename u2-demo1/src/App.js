@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import Person from "./Person/Person";
+import styled from "styled-components";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    persons: [
+      { id: 1, name: "Bobby" },
+      { id: 2, name: "Martha" },
+      { id: 3, name: "Cornel" },
+    ],
+    showPersons: true,
+  };
 
-    this.state = {
-      persons: [
-        { id: 1, name: "Bobby" },
-        { id: 2, name: "Martha" },
-        { id: 3, name: "Cornel" },
-      ],
-      showPersons: true,
-    };
-  }
-
+  //region toggle button
   togglePersonsHandler = () => {
     this.setState({ showPersons: !this.state.showPersons });
   };
+  // endregion
 
+  // region delete person
   delPersonHandler = (index) => {
     const persons = [...this.state.persons];
     persons.splice(index, 1);
@@ -40,18 +40,21 @@ class App extends React.Component {
 
     this.setState({ persons: persons });
   };
+  //endregion
 
   render() {
-    const btnStyle = {
-      cursor: "pointer",
-      padding: "8px",
-      border: "",
-      color: "black",
-      backgroundColor: "white",
-      ":hover": {
-        backgroundColor: "red",
-      },
-    };
+    const BtnStyled = styled.button`
+      cursor: pointer;
+      color: blue;
+      padding: 6px;
+      background-color: white;
+      &:hover {
+        background-color: red;
+      }
+      &::after {
+        content: "${(props) => (props.alt ? "Hide" : "Show")}";
+      }
+    `;
 
     let person = null;
 
@@ -70,16 +73,14 @@ class App extends React.Component {
           })}
         </div>
       );
-
-      btnStyle.backgroundColor = "black";
-      btnStyle.color = "white";
     }
 
     return (
       <div className={`App`}>
-        <button style={btnStyle} onClick={this.togglePersonsHandler}>
-          Switch!
-        </button>
+        <BtnStyled
+          alt={this.state.showPersons}
+          onClick={this.togglePersonsHandler}
+        ></BtnStyled>
         {person}
       </div>
     );

@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 const Person = (props) => {
   const style = {
-    "@media (min-width: 800px)": {
+    "@media (minwidth: 800px)": {
       width: "350px",
       backgroundColor: "red !important",
     },
   };
 
   const StyledDiv = styled.div`
-    background: papayawhip;
-    padding: 14px;
+    padding: 4px;
+    cursor: cell;
   `;
 
   return (
