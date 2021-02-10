@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./containers/App";
 
-// What the heck is React.StrictMode
+// What the f**k is React.StrictMode
 ReactDOM.render(
   <React.StrictMode>
     <App title={`Person Manager`} />
