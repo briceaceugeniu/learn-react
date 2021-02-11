@@ -1,45 +1,36 @@
 import React from "react";
 import "./Person.css";
-import styled from "styled-components";
 
-const Person = (props) => {
-  const style = {
-    "@media (minwidth: 800px)": {
-      width: "350px",
-      backgroundColor: "red !important",
-    },
-  };
+class Person extends React.Component {
+  render() {
+    console.log("[Persons.js] render");
 
-  const StyledDiv = styled.div`
-    padding: 4px;
-    cursor: cell;
-  `;
+    return (
+      <div className={`ui card`}>
+        <div className={`content`}>
+          <div className={`header`}>
+            <p className={`name css-selector`}>My name is {this.props.name} </p>
+            <i
+              onClick={() => this.props.click()}
+              className=" delIcon ban icon right floated"
+            />
+          </div>
+          <div>
+            <p>I am a good person, think...</p>
+          </div>
 
-  return (
-    <div className={`ui card`}>
-      <div className={`content`} style={style}>
-        <div className={`header`}>
-          <p className={`name css-selector`}>My name is {props.name} </p>
-          <i
-            onClick={() => props.click()}
-            className=" delIcon ban icon right floated"
-          />
-        </div>
-        <StyledDiv>
-          <p>I am a good person, think...</p>
-        </StyledDiv>
-
-        <div className="ui transparent input small">
-          <input
-            onChange={props.changeName}
-            type="text"
-            placeholder="New name..."
-            value={props.name}
-          />
+          <div className="ui transparent input small">
+            <input
+              onChange={this.props.changeName}
+              type="text"
+              placeholder="New name..."
+              value={this.props.name}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Person;
