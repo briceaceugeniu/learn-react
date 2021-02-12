@@ -4,6 +4,11 @@ import classes from "../containers/App.module.css";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     persons: [
       { id: 1, name: "Kerrigan" },
@@ -13,6 +18,15 @@ class App extends React.Component {
     ],
     showPersons: true,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
 
   //region toggle button
   togglePersonsHandler = () => {
@@ -44,6 +58,8 @@ class App extends React.Component {
   //endregion
 
   render() {
+    console.log("[App.js] render");
+
     let person = null;
 
     if (this.state.showPersons) {
