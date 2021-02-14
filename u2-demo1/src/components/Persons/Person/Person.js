@@ -3,7 +3,7 @@ import "./Person.css";
 
 class Person extends React.Component {
   render() {
-    console.log("[Persons.js] render");
+    console.log("[Person.js] render");
 
     return (
       <div className={`ui card`}>

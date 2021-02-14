@@ -28,6 +28,15 @@ class App extends React.Component {
     console.log("[App.js] componentDidMount");
   }
 
+  componentDidUpdate() {
+    console.log("[App.js] componentDidUpdate");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] shouldComponentUpdate");
+    return true;
+  }
+
   //region toggle button
   togglePersonsHandler = () => {
     this.setState({ showPersons: !this.state.showPersons });
