@@ -1,4 +1,7 @@
 import React from "react";
+import TodoBanner from "./TodoBanner";
+import TodoRow from "./TodoRow";
+import TodoCreator from "./TodoCreator";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -46,38 +49,31 @@ export default class App extends React.Component {
 
   todoTableRows = () =>
     this.state.todoItems.map((item) => (
-      <tr key={item.action}>
-        <td>{item.action}</td>
-        <td>
-          <input
-            type="checkbox"
-            checked={item.done}
-            onChange={() => this.toggleTodo(item)}
-          />
-        </td>
-      </tr>
+      <TodoRow key={item.action} item={item} callback={this.toggleTodo} />
     ));
 
   render() {
     return (
       <div>
-        <h4 className={`bg-primary text-white text-center p-2`}>
-          {this.state.userName}'s To Do List (
-          {this.state.todoItems.filter((i) => !i.done).length} items to do)
-        </h4>
+        <TodoBanner name={this.state.userName} tasks={this.state.todoItems} />
         <div className={`container-fluid`}>
           <div className={`my-1`}>
-            <input
-              className={`form-control`}
-              value={this.state.newItemText}
-              onChange={(e) => this.updateNewTextValue(e.target.value)}
+            <TodoCreator
+              callback={this.updateNewTextValue}
+              itemName={this.state.newItemText}
+              newItem={this.createNewTodo}
             />
-            <button
-              className={`btn btn-primary mt-1`}
-              onClick={this.createNewTodo}
-            >
-              Add
-            </button>
+            {/*<input*/}
+            {/*  className={`form-control`}*/}
+            {/*  value={this.state.newItemText}*/}
+            {/*  onChange={(e) => this.updateNewTextValue(e.target.value)}*/}
+            {/*/>*/}
+            {/*<button*/}
+            {/*  className={`btn btn-primary mt-1`}*/}
+            {/*  onClick={this.createNewTodo}*/}
+            {/*>*/}
+            {/*  Add*/}
+            {/*</button>*/}
           </div>
           <table className={`table table-striped table-bordered`}>
             <thead>
