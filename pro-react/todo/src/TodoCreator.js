@@ -7,6 +7,14 @@ class TodoCreator extends React.Component {
     this.setState({ newItemText: value });
   };
 
+  newItem = () => {
+    if (this.state.newItemText.trim().length < 1) {
+      return;
+    }
+    this.props.callback(this.state.newItemText);
+    this.setState({ newItemText: "" });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -15,10 +23,7 @@ class TodoCreator extends React.Component {
           value={this.state.newItemText}
           onChange={(e) => this.updateNewTextValue(e.target.value)}
         />
-        <button
-          className={`btn btn-primary mt-1`}
-          onClick={() => this.props.newItem()}
-        >
+        <button className={`btn btn-primary mt-1`} onClick={this.newItem}>
           Add
         </button>
       </React.Fragment>

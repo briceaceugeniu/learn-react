@@ -15,7 +15,6 @@ export default class App extends React.Component {
         { action: "Do 20 pushups", done: false },
         { action: "Trink water", done: true },
       ],
-      newItemText: "",
     };
   }
 
@@ -23,18 +22,10 @@ export default class App extends React.Component {
     this.setState({ newItemText: value });
   };
 
-  createNewTodo = () => {
-    if (
-      !this.state.todoItems.find(
-        (item) => item.action === this.state.newItemText
-      )
-    ) {
+  createNewTodo = (task) => {
+    if (!this.state.todoItems.find((item) => item.action === task)) {
       this.setState({
-        todoItems: [
-          ...this.state.todoItems,
-          { action: this.state.newItemText, done: false },
-        ],
-        newItemText: "",
+        todoItems: [...this.state.todoItems, { action: task, done: false }],
       });
     }
   };
@@ -58,11 +49,7 @@ export default class App extends React.Component {
         <TodoBanner name={this.state.userName} tasks={this.state.todoItems} />
         <div className={`container-fluid`}>
           <div className={`my-1`}>
-            <TodoCreator
-              callback={this.updateNewTextValue}
-              itemName={this.state.newItemText}
-              newItem={this.createNewTodo}
-            />
+            <TodoCreator callback={this.createNewTodo} />
             {/*<input*/}
             {/*  className={`form-control`}*/}
             {/*  value={this.state.newItemText}*/}
